@@ -35,6 +35,7 @@ from lib.dataset.inference import Inference
 from lib.utils.smooth_pose import smooth_pose
 from lib.data_utils.kp_utils import convert_kps
 from lib.utils.pose_tracker import run_posetracker
+from lib.models.smpl import get_smpl_faces
 
 from lib.utils.demo_utils import (
     download_youtube_clip,
@@ -47,6 +48,19 @@ from lib.utils.demo_utils import (
 )
 
 MIN_NUM_FRAMES = 25
+
+def save_obj( verts, faces, path ):
+
+    with open(path, 'w') as f:
+        f.write("# OBJ file\n")
+        for v in verts:
+            f.write("v %.4f %.4f %.4f\n" % v.co[:])
+        for curr_face in faces:
+            f.write("f")
+            for i in curr_face:
+                f.write(" %d" % (i + 1))
+            f.write("\n")
+
 
 def main(args):
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -355,6 +369,8 @@ def main(args):
             if x.endswith('.png') or x.endswith('.jpg')
         ])
 
+        smpl_faces = get_smpl_faces()
+
         for frame_idx in tqdm(range(len(image_file_names))):
             img_fname = image_file_names[frame_idx]
 
@@ -371,7 +387,7 @@ def main(args):
                     os.makedirs(mesh_folder, exist_ok=True)
                     mesh_filename = os.path.join(mesh_folder, f'{frame_idx:06d}.obj')
 
-
+                    save_obj( frame_verts, smpl_faces, mesh_filename )
 
 
     shutil.rmtree(image_folder)
