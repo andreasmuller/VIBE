@@ -338,6 +338,42 @@ def main(args):
         images_to_video(img_folder=output_img_folder, output_vid_file=save_name)
         shutil.rmtree(output_img_folder)
 
+    else:
+
+        output_img_folder = f'{image_folder}_output'
+        os.makedirs(output_img_folder, exist_ok=True)
+
+        print(f'Rendering output video, writing frames to {output_img_folder}')
+
+        # prepare results for rendering
+        frame_results = prepare_rendering_results(vibe_results, num_frames)
+        mesh_color = {k: colorsys.hsv_to_rgb(np.random.rand(), 0.5, 1.0) for k in vibe_results.keys()}
+
+        image_file_names = sorted([
+            os.path.join(image_folder, x)
+            for x in os.listdir(image_folder)
+            if x.endswith('.png') or x.endswith('.jpg')
+        ])
+
+        for frame_idx in tqdm(range(len(image_file_names))):
+            img_fname = image_file_names[frame_idx]
+
+            for person_id, person_data in frame_results[frame_idx].items():
+                frame_verts = person_data['verts']
+                frame_cam = person_data['cam']
+
+                mc = mesh_color[person_id]
+
+                mesh_filename = None
+
+                if args.save_obj:
+                    mesh_folder = os.path.join(output_path, 'meshes', f'{person_id:04d}')
+                    os.makedirs(mesh_folder, exist_ok=True)
+                    mesh_filename = os.path.join(mesh_folder, f'{frame_idx:06d}.obj')
+
+
+
+
     shutil.rmtree(image_folder)
     print('================= END =================')
 
