@@ -53,8 +53,14 @@ def save_obj( verts, faces, path ):
 
     with open(path, 'w') as f:
         f.write("# OBJ file\n")
+        
         for v in verts:
-            f.write("v %.4f %.4f %.4f\n" % v.co[:])
+            #f.write("v %.4f %.4f %.4f\n" % v.co[:])
+            f.write("v")
+            for val in v:
+                f.write(" %.4f" % val)
+            f.write("\n")
+
         for curr_face in faces:
             f.write("f")
             for i in curr_face:
