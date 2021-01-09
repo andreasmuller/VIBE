@@ -313,7 +313,7 @@ def main(args):
 
                 sx, sy, tx, ty = frame_cam
 
-                print("Camera params " + str(sx) + " " + str(sy)  + " " + str(tx)  + " " str(ty) )
+                print("Camera params " + str(sx) + " " + str(sy)  + " " + str(tx)  + " " + str(ty) )
 
                 mc = mesh_color[person_id]
 
