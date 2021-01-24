@@ -121,6 +121,8 @@ def process_pose(current_frame, pose, trans, pelvis_position):
     armature = bpy.data.objects['Armature']
     bones = armature.pose.bones
 
+    print("process_pose trans " + str(trans))
+
     # Pelvis: X-Right, Y-Up, Z-Forward (Blender -Y)
 
     # Set absolute pelvis location relative to Pelvis bone head
