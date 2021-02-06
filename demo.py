@@ -313,7 +313,7 @@ def main(args):
 
                 sx, sy, tx, ty = frame_cam
 
-                print("Camera params " + str(sx) + " " + str(sy)  + " " + str(tx)  + " " + str(ty) )
+                #print("Camera params " + str(sx) + " " + str(sy)  + " " + str(tx)  + " " + str(ty) )
 
                 mc = mesh_color[person_id]
 
@@ -394,13 +394,14 @@ def main(args):
                 sx, sy, tx, ty = frame_cam
                 print("No render camera params " + str(sx) + " " + str(sy)  + " " + str(tx)  + " " + str(ty) )
 
-                print("First vertex before " + str(frame_verts[0][0]) + "  " + str(frame_verts[0][1]) + "  " + + str(frame_verts[0][2]) )
+                # This is not how you access the vert data
+                #print("First vertex before " + str(frame_verts[0][0]) + "  " + str(frame_verts[0][1]) + "  " + + str(frame_verts[0][2]) )
 
                 for v in frame_verts:
                     v[0] += tx * sx
                     v[1] += ty * sy                
 
-                print("First vertex after " + str(frame_verts[0][0]) + "  " + str(frame_verts[0][1]) + "  " + + str(frame_verts[0][2]) )
+                #print("First vertex after " + str(frame_verts[0][0]) + "  " + str(frame_verts[0][1]) + "  " + + str(frame_verts[0][2]) )
 
                 mc = mesh_color[person_id]
 
