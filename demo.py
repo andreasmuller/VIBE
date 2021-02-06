@@ -394,6 +394,7 @@ def main(args):
                 sx, sy, tx, ty = frame_cam
                 print("No render camera params " + str(sx) + " " + str(sy)  + " " + str(tx)  + " " + str(ty) )
 
+                print( "frame_verts shape" + str(frame_verts.shape) )
                 # This is not how you access the vert data
                 #print("First vertex before " + str(frame_verts[0][0]) + "  " + str(frame_verts[0][1]) + "  " + + str(frame_verts[0][2]) )
 
