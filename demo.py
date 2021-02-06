@@ -391,11 +391,19 @@ def main(args):
                 frame_verts = person_data['verts']
                 frame_cam = person_data['cam']
 
+                sx, sy, tx, ty = frame_cam
+
+                print("No render camera params " + str(sx) + " " + str(sy)  + " " + str(tx)  + " " + str(ty) )
+
                 mc = mesh_color[person_id]
 
                 mesh_filename = None
 
                 if args.save_obj:
+
+
+
+
                     mesh_folder = os.path.join(output_path, 'meshes', f'{person_id:04d}')
                     os.makedirs(mesh_folder, exist_ok=True)
                     mesh_filename = os.path.join(mesh_folder, f'{frame_idx:06d}.obj')
