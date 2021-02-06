@@ -90,6 +90,7 @@ class Renderer:
             mesh.apply_transform(R)
 
         sx, sy, tx, ty = cam
+        print( "sx " + str(sx) + " " + "sy " + str(sy) + " " + "tx " + str(tx) + " " + "ty " + str(ty) )
 
         camera = WeakPerspectiveCamera(
             scale=[sx, sy],
