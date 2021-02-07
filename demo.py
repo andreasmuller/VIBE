@@ -396,13 +396,13 @@ def main(args):
 
                 print( "frame_verts shape" + str(frame_verts.shape) + " type " + str(type(frame_verts)))
                 
-                print("First vertex before " + str(frame_verts[0,0]) + "  " + str(frame_verts[0,1]) + "  " + + str(frame_verts[0,2]) )
+                print("First vertex before " + str(frame_verts[0,0]) + "  " + str(frame_verts[0,1]) + "  " + str(frame_verts[0,2]) )
 
                 for v in frame_verts:
                     v[0] += tx * sx
                     v[1] += ty * sy                
 
-                print("First vertex after " + str(frame_verts[0, 0]) + "  " + str(frame_verts[0, 1]) + "  " + + str(frame_verts[0, 2]) )
+                print("First vertex after " + str(frame_verts[0, 0]) + "  " + str(frame_verts[0, 1]) + "  " + str(frame_verts[0, 2]) )
 
                 mc = mesh_color[person_id]
 
