@@ -398,7 +398,7 @@ def main(args):
                 flength = 500.
                 tz = flength / (0.5 * img_size * cam_s)
                 trans = np.hstack([cam_pos, tz])
-                print( "translation = " + str(trans) 
+                print( "translation = " + str(trans) )
 
 
                 print("No render camera params " + str(sx) + " " + str(sy)  + " " + str(tx)  + " " + str(ty) )
