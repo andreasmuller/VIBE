@@ -392,6 +392,15 @@ def main(args):
                 frame_cam = person_data['cam']
 
                 sx, sy, tx, ty = frame_cam
+
+                cam_s = frame_cam[0]
+                cam_pos = frame_cam[1:]
+                flength = 500.
+                tz = flength / (0.5 * img_size * cam_s)
+                trans = np.hstack([cam_pos, tz])
+                print( "translation = " + str(trans) 
+
+
                 print("No render camera params " + str(sx) + " " + str(sy)  + " " + str(tx)  + " " + str(ty) )
 
                 print( "frame_verts shape" + str(frame_verts.shape) + " type " + str(type(frame_verts)))
